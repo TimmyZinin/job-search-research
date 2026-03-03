@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Media Post Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: #F5F0EB;
+  color: #3D2C1E;
+  padding: 40px 24px;
+}
+.page-title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 40px;
+  color: #6B5B4E;
+}
+
+/* OG Image card */
+.og-image {
+  width: 1200px;
+  height: 630px;
+  margin: 0 auto 60px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 12px 48px rgba(61,44,30,0.15);
+  background: linear-gradient(135deg, #FFF8F2 0%, #FFD6B0 40%, #FBBF8A 70%, #E8735A 100%);
+  position: relative;
+  display: flex;
+  padding: 60px;
+}
+.og-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 2;
+}
+.og-badge {
+  display: inline-block;
+  background: #C4573A;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  border-radius: 50px;
+  margin-bottom: 24px;
+  width: fit-content;
+}
+.og-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #3D2C1E;
+  margin-bottom: 20px;
+  max-width: 620px;
+}
+.og-sub {
+  font-size: 20px;
+  color: #6B5B4E;
+  max-width: 500px;
+  line-height: 1.5;
+}
+.og-right {
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  z-index: 2;
+}
+.og-stat-card {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.og-stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.og-stat-icon.c1 { background: rgba(232,115,90,0.2); }
+.og-stat-icon.c2 { background: rgba(45,106,79,0.15); }
+.og-stat-icon.c3 { background: rgba(212,168,83,0.2); }
+.og-stat-icon.c4 { background: rgba(196,87,58,0.15); }
+.og-stat-num {
+  font-size: 28px;
+  font-weight: 900;
+  color: #C4573A;
+}
+.og-stat-label {
+  font-size: 13px;
+  color: #6B5B4E;
+  font-weight: 500;
+}
+.og-image::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+}
+.og-footer {
+  position: absolute;
+  bottom: 24px;
+  left: 60px;
+  right: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 3;
+}
+.og-footer-left {
+  font-size: 14px;
+  font-weight: 700;
+  color: #3D2C1E;
+  opacity: 0.6;
+}
+.og-footer-right {
+  font-size: 14px;
+  font-weight: 600;
+  color: #C4573A;
+}
+
+/* Post preview */
+.post-section {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.post-section h2 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 24px;
+  color: #C4573A;
+}
+.post-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 4px 24px rgba(61,44,30,0.08);
+  margin-bottom: 32px;
+}
+.post-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #6B5B4E;
+}
+.post-card .platform {
+  font-size: 0.85rem;
+  color: #C4573A;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.post-text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  white-space: pre-line;
+  color: #3D2C1E;
+}
+.post-text .hashtags {
+  color: #2D6A4F;
+  font-weight: 500;
+}
+.note-box {
+  background: #FFF3E6;
+  border-radius: 16px;
+  padding: 24px;
+  border-left: 4px solid #D4A853;
+  margin-top: 24px;
+}
+.note-box h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
+.note-box p { font-size: 0.88rem; color: #6B5B4E; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<h1 class="page-title">Social Media Post — Preview</h1>
+
+<!-- OG IMAGE (screenshot this for social) -->
+<div class="og-image" id="og-card">
+  <div class="og-left">
+    <div class="og-badge">Исследование 2026</div>
+    <h1 class="og-title">Как люди ищут работу в Instagram</h1>
+    <p class="og-sub">Анализ 120+ аккаунтов, вирусного контента, болей и пустых ниш русскоязычного рынка</p>
+  </div>
+  <div class="og-right">
+    <div class="og-stat-card">
+      <div class="og-stat-icon c1">📉</div>
+      <div>
+        <div class="og-stat-num">-26%</div>
+        <div class="og-stat-label">вакансий за год</div>
+      </div>
+    </div>
+    <div class="og-stat-card">
+      <div class="og-stat-icon c2">🔥</div>
+      <div>
+        <div class="og-stat-num">45K</div>
+        <div class="og-stat-label">лайков на вирусном Reel</div>
+      </div>
+    </div>
+    <div class="og-stat-card">
+      <div class="og-stat-icon c3">🤖</div>
+      <div>
+        <div class="og-stat-num">0</div>
+        <div class="og-stat-label">контента про AI для поиска работы</div>
+      </div>
+    </div>
+    <div class="og-stat-card">
+      <div class="og-stat-icon c4">💬</div>
+      <div>
+        <div class="og-stat-num">1.8M</div>
+        <div class="og-stat-label">постов #удалённаяработа</div>
+      </div>
+    </div>
+  </div>
+  <div class="og-footer">
+    <span class="og-footer-left">timmyzinin.github.io/job-search-research</span>
+    <span class="og-footer-right">@timzinin</span>
+  </div>
+</div>
+
+<!-- POST TEXT -->
+<div class="post-section">
+  <h2>Нарратив для поста</h2>
+
+  <div class="post-card">
+    <h3>Универсальный пост</h3>
+    <div class="platform">LinkedIn / Telegram / Threads / Instagram</div>
+    <div class="post-text">Провёл исследование: как русскоязычные люди ищут работу через Instagram в 2026 году.
+
+Проанализировал 120+ аккаунтов, 30 хэштегов, десятки вирусных постов. Вот что нашёл:
+
+<strong>3 факта, которые меня удивили:</strong>
+
+1. Тег #удалённаяработа (1.8M постов) обгоняет #карьера (982K) почти вдвое. Формат работы волнует людей больше, чем карьерный рост как таковой.
+
+2. Самый вирусный пост о работе — 45,000 лайков — это не мотивация и не «верь в себя». Это конкретные фразы для переговоров о зарплате. Дословные скрипты: что говорить, когда HR называет цифру ниже ожиданий.
+
+3. Ниша «AI-инструменты для поиска работы» на русском — полностью пуста. Ноль контента. При этом 52% россиян уже тревожатся, что AI повлияет на их профессию.
+
+<strong>А ещё:</strong>
+— Вакансии упали на 26%, а резюме выросли на 31%. Рынок кандидатов закончился.
+— 40% вакансий на hh.ru публикуются без зарплаты. Появился термин «зарплатный газлайтинг».
+— Механика «пиши слово в комменты» даёт до 1,800 комментов. Люди готовы на всё ради конкретного гайда.
+
+Полное исследование с инфографикой — по ссылке.
+
+Что из этого совпадает с вашим опытом поиска работы?
+
+<span class="hashtags">#поискработы #карьера #рынок_труда #hr #собеседование #резюме #удалённаяработа #исследование</span></div>
+  </div>
+
+  <div class="note-box">
+    <h4>Рекомендации по публикации</h4>
+    <p>
+      <strong>LinkedIn:</strong> Полный текст + картинка (OG-карточка сверху) + ссылка на исследование в первом комментарии (не в посте — алгоритм занижает посты с внешними ссылками).
+      <br><br>
+      <strong>Telegram:</strong> Картинка + сокращённый текст (первые 3 факта) + кнопка «Читать исследование».
+      <br><br>
+      <strong>Instagram:</strong> Карусель из 7-10 слайдов с ключевыми данными. Полный текст в caption. Ссылка в bio.
+      <br><br>
+      <strong>Threads:</strong> Короткая версия (1 факт + ссылка). Или thread из 3-4 постов по одному факту.
+      <br><br>
+      <strong>UTM:</strong> ?utm_source={platform}&utm_medium=social&utm_campaign=job_search_research&utm_content=post_01
+    </p>
+  </div>
+</div>
+
+</body>
+</html>
